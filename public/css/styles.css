@@ -22,3 +22,17 @@ ul {
   li a:hover {
     background-color: #001387;
   }
+
+  .connexion{
+      margin-left: 80%;
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #001387;
+    color: white;
+    text-align: center;
+  }
