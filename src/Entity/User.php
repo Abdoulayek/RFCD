@@ -137,6 +137,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+   
+
     public function getPrenom(): ?string
     {
         return $this->Prenom;

@@ -26,4 +26,12 @@ class HomeController extends AbstractController
         return $this->render('registration/register.html.twig', 
         ['form' => $form->createView()]);
     }
+
+    #[Route('/connexion', name: 'app_connexion')]
+    public function connexion(): Response
+    {
+        return $this->render('login/index.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 }

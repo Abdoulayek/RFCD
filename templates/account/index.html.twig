@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  margin-top : 150px;
+  height : 300px; 
+  border-radius : 20px;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  margin-top : 100px;
+}
+
+
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+body {
+    background : white;
+}
+
+.profil {
+      margin-top : 20%;
+}
+
+
+</style>
+
+ <ul>
+  <li><a>Accueil</a></li>
+  <li><a>Mes Stagiaires</a></li>
+  <li><a>Nos Certificateurs</a></li>
+  <li><a>Contact</a></li>
+  <li class="connexion"><a>Déconnexion</a></li>
+    </ul>
+
+
+<div class="card">
+ 
+  <div class="profil">
+  <h1>Bienvenue Abdoulaye!</h1>
+  <p class="title">Email</p>
+  <p>Adresse Nbre de Stagiaires</p>
+  
+  {{app.user}}
+   </div>
+</div>
+
+{% endblock %}
