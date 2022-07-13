@@ -34,4 +34,20 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+    #[Route('/stagiaire', name: 'app_stagiaire')]
+    public function stagiaire(): Response
+    {
+        return $this->render('stagiaire/index.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
+    #[Route('/modifstagiaire', name: 'app_modifstagiaire')]
+    public function modifstagiaire(): Response
+    {
+        return $this->render('stagiaire/modif.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 }

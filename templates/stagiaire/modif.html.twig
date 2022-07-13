@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+<style>
+body{
+    background: #001387;
+}
+#container{
+    width:400px;
+    margin:0 auto;
+    margin-top:10%;
+}
+/* Bordered form */
+form {
+    width:100%;
+    padding: 30px;
+    border: 1px solid #f1f1f1;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+#container h1{
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+input[type=submit]{
+    background-color: #001387;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+input[type=submit]:hover {
+    background-color: white;
+    color: #001387;
+    border: 1px solid;
+}
+
+.insc{
+    margin-top: 15px;
+}
+</style>
+
+        
+<div id="container">
+            <!-- zone de connexion -->
+            
+            <form action="verification.php" method="POST">
+                <h1>Ajouter un stagiaire</h1>
+                
+                 <label><b>Nom</b></label>
+                <input type="text" placeholder="Entrer le nom du stagiaire" name="nom" required>
+
+                  <label><b>Prénom</b></label>
+                <input type="text" placeholder="Entrer le prénom du stagiaire" name="prenom" required>
+
+                <label><b>Email</b></label>
+                <input type="text" placeholder="Entrer l'email du stagiaire" name="email" required>
+
+                <label><b>Profil</b></label>
+                <input type="text" placeholder="Entrer le profil du stagiaire" name="profil" required>
+
+                <input type="submit" id='submit' value='Ajouter' >
+            
+
+</div>
+
+
+
+{% endblock %}
