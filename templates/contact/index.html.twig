@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+<style>
+
+/* Style inputs with type="text", select elements and textareas */
+input[type=text],input[type=email] {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 1px solid white; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+/* Style the submit button with a specific background color etc */
+input[type=submit]{
+    background-color: #001387;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+input[type=submit]:hover {
+    background-color: white;
+    color: #001387;
+    border: 1px solid;
+}
+
+/* Add a background color and some padding around the form */
+.container {
+    margin-top: 50px;
+  border-radius: 5px;
+  background-color: #001387;
+  padding: 20px;
+}
+
+
+</style>
+
+ <div class="container">
+  <form action="action_page.php">
+
+    <label for="fname">Prenom</label>
+    <input type="text" id="fname" name="firstname" placeholder="Prenom">
+
+    <label for="lname">Nom</label>
+    <input type="text" id="lname" name="lastname" placeholder="Nom">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Email">
+   
+
+    <label for="subject">Message</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Nous Contacter">
+
+  </form>
+</div>
+
+
+{% endblock %}
