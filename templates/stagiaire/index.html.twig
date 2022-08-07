@@ -1,66 +1,64 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}Ajout de Stagiaire{% endblock %}
 
 {% block body %}
+
 <style>
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 500px;
-  margin: auto;
-  text-align: center;
-  margin-top : 150px;
-  height : 300px; 
-  border-radius : 20px;
+body {
+    background-color : #001387;
 }
 
-.title {
-  color: grey;
-  font-size: 18px;
-}
+* {box-sizing: border-box}
 
-button {
-  border: none;
-  outline: 0;
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+label,h1 {
+    color : white;
+}
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=number] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
   display: inline-block;
-  padding: 8px;
+  border: none;
+  
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  
+  outline: none;
+}
+.registerbtn {
+  background-color: #04AA6D;
   color: white;
-  background-color: #000;
-  text-align: center;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
   cursor: pointer;
   width: 100%;
-  font-size: 18px;
-  margin-top : 100px;
+  opacity: 0.9;
 }
 
-
-
-button:hover, a:hover {
-  opacity: 0.7;
+.registerbtn:hover {
+  opacity:1;
 }
-body {
-    background : white;
-}
-
-.profil {
-      margin-top : 20%;
-}
-
-
 </style>
 
- <ul>
-  <li><a>Accueil</a></li>
-  <li><a>Mes Stagiaires</a></li>
-  <li><a>Nos Certificateurs</a></li>
-  <li><a>Contact</a></li>
-  <li class="connexion"><a>Déconnexion</a></li>
-    </ul>
-           <h1 style="text-align:center">Mes Stagiaires</h1>
 
+ <h1 style="text-align:center">Ajout de stagiaire</h1>
 
+    {{ form_start(stagiaireForm) }}
+    
+        {{ form_row(stagiaireForm.Email) }}
+        {{ form_row(stagiaireForm.Nom) }}
+        {{ form_row(stagiaireForm.Prenom) }}
+        {{ form_row(stagiaireForm.Profil) }}
+        
 
-
-
+        <button type="submit" class="registerbtn">Ajouter</button>
+    {{ form_end(stagiaireForm) }}
 {% endblock %}

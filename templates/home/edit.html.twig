@@ -81,13 +81,10 @@ a {
         {{ form_row(registrationForm.Prenom) }}
         {{ form_row(registrationForm.Adresse) }}
         {{ form_row(registrationForm.Siret) }}
-        
         {{ form_row(registrationForm.nbreStagiaires) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="registerbtn">Register</button>
+        <button type="submit" class="registerbtn">Update</button>
     {{ form_end(registrationForm) }}
-    <div class="container signin">
-    <p>Already have an account? <a href="{{path('app_login')}}">Sign in</a>.</p>
-  </div>
+  
 {% endblock %}

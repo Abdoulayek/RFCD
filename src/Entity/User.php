@@ -6,10 +6,12 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -39,20 +41,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $Siret;
 
     #[ORM\Column(type: 'integer')]
-    private $Nombre_Stagiaires;
+    private $nbreStagiaires;
 
-    #[ORM\ManyToOne(targetEntity: Stagiaires::class, inversedBy: 'RelationStagiaire')]
-    private $stagiaires;
+   
 
-    #[ORM\ManyToMany(targetEntity: Certificateurs::class, mappedBy: 'RelationCertificateur')]
-    private $certificateurs;
+   
 
-    #[ORM\ManyToOne(targetEntity: Contact::class, inversedBy: 'RelationUser')]
-    private $contact;
+    #[ORM\OneToMany(mappedBy: 'Relationuser', targetEntity: Stagiaires::class)]
+    private $Relation;
 
     public function __construct()
     {
         $this->certificateurs = new ArrayCollection();
+        $this->Relation = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -175,65 +176,55 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getNombreStagiaires(): ?int
+    public function getnbreStagiaires(): ?int
     {
-        return $this->Nombre_Stagiaires;
+        return $this->nbreStagiaires;
     }
 
-    public function setNombreStagiaires(int $Nombre_Stagiaires): self
+    public function setnbreStagiaires(int $nbreStagiaires): self
     {
-        $this->Nombre_Stagiaires = $Nombre_Stagiaires;
+        $this->nbreStagiaires = $nbreStagiaires;
 
         return $this;
     }
 
-    public function getStagiaires(): ?Stagiaires
-    {
-        return $this->stagiaires;
+
+
+ 
+    
+
+    public function __toString(){
+        return $this->Nom; // Remplacer champ par une propriété "string" de l'entité
     }
 
-    public function setStagiaires(?Stagiaires $stagiaires): self
-    {
-        $this->stagiaires = $stagiaires;
 
-        return $this;
-    }
 
     /**
-     * @return Collection<int, Certificateurs>
+     * @return Collection<int, Stagiaires>
      */
-    public function getCertificateurs(): Collection
+    public function getRelation(): Collection
     {
-        return $this->certificateurs;
+        return $this->Relation;
     }
 
-    public function addCertificateur(Certificateurs $certificateur): self
+    public function addRelation(Stagiaires $relation): self
     {
-        if (!$this->certificateurs->contains($certificateur)) {
-            $this->certificateurs[] = $certificateur;
-            $certificateur->addRelationCertificateur($this);
+        if (!$this->Relation->contains($relation)) {
+            $this->Relation[] = $relation;
+            $relation->setRelationuser($this);
         }
 
         return $this;
     }
 
-    public function removeCertificateur(Certificateurs $certificateur): self
+    public function removeRelation(Stagiaires $relation): self
     {
-        if ($this->certificateurs->removeElement($certificateur)) {
-            $certificateur->removeRelationCertificateur($this);
+        if ($this->Relation->removeElement($relation)) {
+            // set the owning side to null (unless already changed)
+            if ($relation->getRelationuser() === $this) {
+                $relation->setRelationuser(null);
+            }
         }
-
-        return $this;
-    }
-
-    public function getContact(): ?Contact
-    {
-        return $this->contact;
-    }
-
-    public function setContact(?Contact $contact): self
-    {
-        $this->contact = $contact;
 
         return $this;
     }

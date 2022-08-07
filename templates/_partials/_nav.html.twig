@@ -1,0 +1,26 @@
+<style>
+
+profi{
+    width: 50px;
+    height : 50px;
+}
+</style>
+
+
+ 
+ {% if app.user %}
+  <ul>  
+  <li><a>Mes Stagiaires</a></li>
+  <li><a>Nos Certificateurs</a></li>
+  <li><a>Contact</a></li>
+  <li><a href="{{path('app_logout')}}">Déconnexion</a></li>
+    </ul>
+
+{% else %}
+ <ul>
+  <li><a href="{{path('app_home')}}">Accueil</a></li>
+  <li><a href="mailto:abdoulayekante863@gmail.com">Contact</a></li>
+  <li class="connexion"><a href="{{path('app_register')}}">Connexion</a></li>
+    </ul>
+
+{% endif %}

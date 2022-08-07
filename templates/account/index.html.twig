@@ -3,14 +3,18 @@
 {% block body %}
 <style>
 
+
+.titlee {
+  color: grey;
+  font-size: 18px;
+}
+
 .card {
+  margin-left: 30%;
+  width : 500px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 500px;
-  margin: auto;
+  margin-top: 100px;
   text-align: center;
-  margin-top : 150px;
-  height : 300px; 
-  border-radius : 20px;
 }
 
 .title {
@@ -18,7 +22,7 @@
   font-size: 18px;
 }
 
-button {
+.buttonn {
   border: none;
   outline: 0;
   display: inline-block;
@@ -27,45 +31,35 @@ button {
   background-color: #000;
   text-align: center;
   cursor: pointer;
-  width: 100%;
+  width: 80%;
   font-size: 18px;
-  margin-top : 100px;
 }
 
 
 
-button:hover, a:hover {
+.buttonn:hover, a:hover {
   opacity: 0.7;
-}
-body {
-    background : white;
-}
-
-.profil {
-      margin-top : 20%;
 }
 
 
 </style>
 
- <ul>
-  <li><a>Accueil</a></li>
-  <li><a>Mes Stagiaires</a></li>
-  <li><a>Nos Certificateurs</a></li>
-  <li><a>Contact</a></li>
-  <li class="connexion"><a>Déconnexion</a></li>
-    </ul>
+
+
 
 
 <div class="card">
- 
-  <div class="profil">
-  <h1>Bienvenue Abdoulaye!</h1>
-  <p class="title">Email</p>
-  <p>Adresse Nbre de Stagiaires</p>
-  
-  {{app.user}}
-   </div>
+  <img class="profi" src="/profil.png" style="width:30px; height:30px;">
+  <h1>Bienvenue {{app.user.nom}} {{app.user.prenom}} !</h1>
+  <p class="title">{{app.user.email}}</p>
+  <p class="titlee">Adresse</p>
+
+  <p>{{app.user.adresse}}</p>
+
+     <p class="titlee">Nombre de Stagiaires</p>
+        {{app.user.nbreStagiaires}}
+
+  <p><a class="buttonn" href="{{path('update_post',{id:app.user.id})}}">Editer</a></p>
 </div>
 
 {% endblock %}

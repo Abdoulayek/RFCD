@@ -27,12 +27,16 @@ class Stagiaires
     #[ORM\Column(type: 'string', length: 255)]
     private $Profil;
 
-    #[ORM\OneToMany(mappedBy: 'stagiaires', targetEntity: User::class)]
-    private $RelationStagiaire;
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'Relation')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $Relationuser;
+
+   
 
     public function __construct()
     {
         $this->RelationStagiaire = new ArrayCollection();
+        $this->user = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,33 +92,17 @@ class Stagiaires
         return $this;
     }
 
-    /**
-     * @return Collection<int, User>
-     */
-    public function getRelationStagiaire(): Collection
+    public function getRelationuser(): ?User
     {
-        return $this->RelationStagiaire;
+        return $this->Relationuser;
     }
 
-    public function addRelationStagiaire(User $relationStagiaire): self
+    public function setRelationuser(?User $Relationuser): self
     {
-        if (!$this->RelationStagiaire->contains($relationStagiaire)) {
-            $this->RelationStagiaire[] = $relationStagiaire;
-            $relationStagiaire->setStagiaires($this);
-        }
+        $this->Relationuser = $Relationuser;
 
         return $this;
     }
 
-    public function removeRelationStagiaire(User $relationStagiaire): self
-    {
-        if ($this->RelationStagiaire->removeElement($relationStagiaire)) {
-            // set the owning side to null (unless already changed)
-            if ($relationStagiaire->getStagiaires() === $this) {
-                $relationStagiaire->setStagiaires(null);
-            }
-        }
-
-        return $this;
-    }
+    
 }
