@@ -46,6 +46,10 @@ input[type=text]:focus, input[type=password]:focus {
 .registerbtn:hover {
   opacity:1;
 }
+
+a {
+  color : white;
+}
 </style>
 
 
@@ -61,4 +65,5 @@ input[type=text]:focus, input[type=password]:focus {
 
         <button type="submit" class="registerbtn">Ajouter</button>
     {{ form_end(stagiaireForm) }}
+    <a href="{{path('app_liste')}}">Retour à la liste</a>
 {% endblock %}

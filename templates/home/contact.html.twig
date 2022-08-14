@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Our Contact Form{% endblock title %}
+
+{% block body %}
+<style>
+
+body{
+    background : #001387;
+}
+
+legend, label, input[type=text] {
+    color : white;
+}
+
+legend {
+    text-align : center;
+}
+
+.btn {
+    margin-top : 10px;
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.btn:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+.btn:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+.block {
+    margin-top : 100px;
+    margin-left : 30%;
+}
+
+.alert alert-notice{
+    color : white;
+}
+
+form {
+    margin: 10px;
+}
+
+
+
+</style>
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+
+    <div class="block">
+       {{ form_start(our_form) }}
+        {{ form_widget(our_form) }}
+
+        <input type="submit" value="Choisir" class = "btn" />
+
+        {{ form_end(our_form) }}
+    </div>
+
+{% endblock %}

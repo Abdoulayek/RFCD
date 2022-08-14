@@ -10,9 +10,9 @@ profi{
  
  {% if app.user %}
   <ul>  
-  <li><a>Mes Stagiaires</a></li>
-  <li><a>Nos Certificateurs</a></li>
-  <li><a>Contact</a></li>
+  <li><a href="{{path('app_liste')}}">Mes Stagiaires</a></li>
+  <li><a href="{{path('app_certificateur')}}">Nos Certificateurs</a></li>
+  <li><a href="{{path('app_contact')}}">Contact</a></li>
   <li><a href="{{path('app_logout')}}">Déconnexion</a></li>
     </ul>
 

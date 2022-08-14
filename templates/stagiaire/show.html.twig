@@ -10,7 +10,7 @@
 }
 
 fieldset {
-    margin-top : 50px;
+    margin-top : 80px;
     border : 2px solid white;
     width : 150px;
     height : 30px;
@@ -49,19 +49,18 @@ a:hover {
 }
 </style>
 
-<h1>Liste des Stagiaires </h1>
-{{app.user.id}}
+<h1>Liste des Stagiaires <a href="{{path('app_stage')}}" class="al">+</a></h1>
+
 {% for liste in liste %}
-{%if app.user.id == liste.id %}
+{%if app.user.id == liste.relationuser.id %}
+
 <table>
 <fieldset>
-{{liste.prenom}}
+{{liste.nom}}     {{liste.prenom}}
 </fieldset>
 </table>
 {%endif%}
 {%endfor%}
 <br />
-<div>
-<a href="{{path('app_stagiaire')}}" class="al">Ajouter un autre stagiaire</a>
-</div>
+
 {%endblock%}

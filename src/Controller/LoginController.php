@@ -15,4 +15,12 @@ class LoginController extends AbstractController
             'controller_name' => 'LoginController',
         ]);
     }
+
+    #[Route('/certificateur', name: 'app_certificateur')]
+    public function certificateur(): Response
+    {
+        return $this->render('home/certificateur.html.twig', [
+            'controller_name' => 'LoginController',
+        ]);
+    }
 }

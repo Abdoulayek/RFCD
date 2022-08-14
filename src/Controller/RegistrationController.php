@@ -3,12 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\ContactFormType;
 use App\Entity\Stagiaires;
 use App\Form\StagiaireFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use App\Form\RegistrationFormType;
 use App\Security\UserAuthenticator;
 use App\Repository\UserRepository;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mailer\MailerInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -115,5 +118,27 @@ class RegistrationController extends AbstractController
         'liste' => $liste
     ]);
 
-}   
+}  
+
+#[Route('/contact', name: 'app_contact')]
+public function contact(Request $request, MailerInterface $mailer)
+{
+    $form = $this->createForm(ContactFormType::class);
+    $form->handleRequest($request);
+    if($form->isSubmitted() && $form->isValid()) {
+        $contactFormData = $form->getData();
+        $message = (new Email())
+            ->from($contactFormData['nom'])
+            ->to('abdoulayekante863@gmail.com')
+            ->subject('Choix Certificateur de ' .$contactFormData['nom'])
+            ->text( $contactFormData['formateur'],
+                'text/plain');
+        $mailer->send($message);
+        $this->addFlash('success', 'Votre choix a été pris en compte');
+        return $this->redirectToRoute('app_contact');
+    }
+    return $this->render('home/contact.html.twig', [
+        'our_form' => $form->createView()
+    ]);
+}
 }
