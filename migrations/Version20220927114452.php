@@ -30,7 +30,7 @@ final class Version20220927114452 extends AbstractMigration
        $this->addSql('ALTER TABLE certificateurs_user ADD CONSTRAINT FK_40ACFD1D2A2AA117 FOREIGN KEY (certificateurs_id) REFERENCES certificateurs (id) ON DELETE CASCADE');
       $this->addSql('ALTER TABLE certificateurs_user ADD CONSTRAINT FK_40ACFD1DA76ED395 FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE contact ADD CONSTRAINT FK_4C62E638265A0880 FOREIGN KEY (relation_certif_id) REFERENCES certificateurs (id)');
-        $this->addSql('ALTER TABLE stagiaires ADD CONSTRAINT FK_4A9FADC649793480 FOREIGN KEY (relationuser_id) REFERENCES user (id)');
+        $this->addSql('ALTER TABLE stagiaires ADD CONSTRAINT FK_4A9FADC649793480 FOREIGN KEY (user_id) REFERENCES user (id)');
     }
 
     public function down(Schema $schema): void
