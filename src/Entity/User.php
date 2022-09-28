@@ -43,11 +43,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private $nbreStagiaires;
 
-   
 
-   
+    
 
-    #[ORM\OneToMany(mappedBy: 'Relationuser', targetEntity: Stagiaires::class)]
+
+/**
+ * [ORM\OneToMany(mappedBy: 'Relationuser', targetEntity: Stagiaires::class)]
+ * @ORM\JoinColumn()
+ */
     private $Relation;
 
     public function __construct()
