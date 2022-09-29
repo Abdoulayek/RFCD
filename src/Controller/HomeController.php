@@ -38,6 +38,7 @@ class HomeController extends AbstractController
     #[Route('/stagiaire', name: 'app_stagiaire')]
     public function stagiaire(): Response
     {
+       
         return $this->render('stagiaire/index.html.twig', [
             'controller_name' => 'HomeController',
         ]);

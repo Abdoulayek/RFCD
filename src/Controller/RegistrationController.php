@@ -103,15 +103,16 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/liste', name: 'app_liste')]
+    #[Route('/liste/{id}', name: 'app_liste')]
 
-    public function action(ManagerRegistry $doctrine): Response
+    public function action(ManagerRegistry $doctrine, $id): Response
     {
-    
-   
-        $liste = $doctrine->getRepository(Stagiaires::class)->findAll();
+       
 
- 
+        $user = $doctrine->getRepository(User::class)->find($id);
+        $liste = $doctrine->getRepository(Stagiaires::class)->findBy(['Relationuser'=>$user]);
+
+        
     
          
     return $this->render('stagiaire/show.html.twig', [
