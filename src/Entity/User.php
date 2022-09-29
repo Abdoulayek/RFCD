@@ -42,7 +42,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'integer')]
     private $nbreStagiaires;
-
+    
+   
 
     
 
@@ -228,6 +229,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $relation->setRelationuser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getP(): ?string
+    {
+        return $this->P;
+    }
+
+    public function setP(string $P): self
+    {
+        $this->P = $P;
 
         return $this;
     }

@@ -27,8 +27,7 @@ class Stagiaires
     #[ORM\Column(type: 'string', length: 255)]
     private $Profil;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $Prof;
+ 
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'Relation')]
     #[ORM\JoinColumn(nullable: false)]
@@ -115,6 +114,18 @@ class Stagiaires
     public function setProf(string $Prof): self
     {
         $this->Prof = $Prof;
+
+        return $this;
+    }
+
+    public function getPrf(): ?string
+    {
+        return $this->Prf;
+    }
+
+    public function setPrf(string $Prf): self
+    {
+        $this->Prf = $Prf;
 
         return $this;
     }
