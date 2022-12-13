@@ -96,6 +96,9 @@ class RegistrationController extends AbstractController
             $stagiaire->setRelationuser($user);
             $entityManager->persist($stagiaire);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Votre stagiaire a été ajouté');
+        return $this->redirectToRoute('app_stage');
         }
   
         return $this->render('stagiaire/index.html.twig', [

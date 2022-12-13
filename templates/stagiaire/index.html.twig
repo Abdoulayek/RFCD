@@ -52,6 +52,11 @@ a {
 }
 </style>
 
+{% for message in app.flashes('success') %}
+    <div class="alert alert-notice">
+        {{ message }}
+    </div>
+{% endfor %}
 
  <h1 style="text-align:center">Ajout de stagiaire</h1>
 
@@ -66,4 +71,4 @@ a {
         <button type="submit" class="registerbtn">Ajouter</button>
     {{ form_end(stagiaireForm) }}
     <a href="{{path('app_liste', {'id':app.user.id})}}">Retour à la liste</a>
-{% endblock %}²²²²²²²²²²²²²²²²²²²²²²²²
+{% endblock %}
