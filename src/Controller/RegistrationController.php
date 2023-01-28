@@ -110,14 +110,9 @@ class RegistrationController extends AbstractController
 
     public function action(ManagerRegistry $doctrine, $id): Response
     {
-       
-
         $user = $doctrine->getRepository(User::class)->find($id);
         $liste = $doctrine->getRepository(Stagiaires::class)->findBy(['Relationuser'=>$user]);
 
-        
-    
-         
     return $this->render('stagiaire/show.html.twig', [
         'liste' => $liste
     ]);

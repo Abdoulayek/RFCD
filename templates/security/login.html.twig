@@ -19,8 +19,15 @@ h1{
     text-align: center;
 }
 
+form {
+
+    margin-left : 30%;
+    margin-top : 100px;
+}
+
 input[type=email], input[type=password]{
-  width: 100%; /* Full width */
+  width: 40%; /* Full width */
+  display:block;
   padding: 12px; /* Some padding */ 
   border: 1px solid #ccc; /* Gray border */
   border-radius: 4px; /* Rounded borders */
@@ -45,6 +52,11 @@ button:hover {
   background-color: #45a049;
 }
 
+a, p {
+
+        color: white;
+}
+
 </style>
 <form method="post">
     {% if error %}
@@ -57,7 +69,6 @@ button:hover {
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
     <label for="inputEmail">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
     <label for="inputPassword">Password</label>
@@ -79,7 +90,10 @@ button:hover {
     #}
 
     <button type="submit">
-        Sign in
+        Connexion
     </button>
+       <div class="container signin">
+       <p>Vous souhaitez vous inscrire ? <a href="{{path('app_register')}}">Inscription</a></p>
+  </div>
 </form>
 {% endblock %}

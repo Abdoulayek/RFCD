@@ -16,6 +16,8 @@ class LoginController extends AbstractController
         ]);
     }
 
+    
+
     #[Route('/certificateur', name: 'app_certificateur')]
     public function certificateur(): Response
     {
