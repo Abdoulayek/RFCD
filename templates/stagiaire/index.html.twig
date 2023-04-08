@@ -19,27 +19,34 @@ label,h1 {
     color : white;
 }
 /* Full-width input fields */
-input[type=text], input[type=password], input[type=number] {
-  width: 100%;
+input[type=text] {
+  width: 20%;
+  border-radius: 10px;
+  height: 20px;
   padding: 15px;
-  margin: 5px 0 22px 0;
+  margin: 10px;
   display: inline-block;
   border: none;
   
 }
 
+
 input[type=text]:focus, input[type=password]:focus {
   
   outline: none;
 }
+
 .registerbtn {
-  background-color: #04AA6D;
-  color: white;
+  background-color: #FFFF;
+  color: #001387;
   padding: 16px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  border-radius: 15px;
+  margin-left: 40px;
+  margin-top: 20px;
+  width: 250px;
   opacity: 0.9;
 }
 
@@ -50,20 +57,41 @@ input[type=text]:focus, input[type=password]:focus {
 a {
   color : white;
 }
+
+.emailContainer {
+  margin-left: 45px;
+}
+
+.nomContainer {
+  margin-left: 52px;
+}
+
+.prenomContainer {
+  margin-left: 35px;
+}
+form {
+  margin-left: 40%;
+}
 </style>
 
 
- <h1 style="text-align:center">Ajout de stagiaire</h1>
-
+<h1 style="text-align:center">Ajout de stagiaire</h1>
+<div class="form">
     {{ form_start(stagiaireForm) }}
-    
+        <div class="emailContainer">
         {{ form_row(stagiaireForm.Email) }}
+        </div>
+        <div class="nomContainer">
         {{ form_row(stagiaireForm.Nom) }}
+        </div>
+        <div class="prenomContainer">
         {{ form_row(stagiaireForm.Prenom) }}
-        {{ form_row(stagiaireForm.Profil) }}
-        
-
+        </div>
+        {{ form_row(stagiaireForm.Profil, {
+            label: 'Certification souhaitée'
+        }) }}
         <button type="submit" class="registerbtn">Ajouter</button>
     {{ form_end(stagiaireForm) }}
     <a href="{{path('app_liste')}}">Retour à la liste</a>
+</div>
 {% endblock %}

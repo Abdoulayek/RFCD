@@ -18,11 +18,38 @@ body {
 label,h1 {
     color : white;
 }
+.inscriptionContainer{
+  margin-left: 35%;
+}
 /* Full-width input fields */
-input[type=text], input[type=password], input[type=number] {
-  width: 100%;
+input[type=text] {
+  width: 30%;
+  border-radius: 10px;
+  height: 20px;
   padding: 15px;
-  margin: 5px 0 22px 0;
+  margin: 10px;
+  display: inline-block;
+  border: none;
+  
+}
+
+input[type=password] {
+  width: 28.5%;
+  border-radius: 10px;
+  height: 20px;
+  padding: 15px;
+  margin: 10px;
+  display: inline-block;
+  border: none;
+  
+}
+
+input[type=number] {
+  width: 120px;
+  border-radius: 10px;
+  height: 20px;
+  padding: 15px;
+  margin: 10px;
   display: inline-block;
   border: none;
   
@@ -41,13 +68,16 @@ hr {
 
 /* Set a style for the submit/register button */
 .registerbtn {
-  background-color: #04AA6D;
-  color: white;
+  background-color: #FFFF;
+  color: #001387;
   padding: 16px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  border-radius: 15px;
+  margin-left: 42%;
+  margin-top: 20px;
+  width: 250px;
   opacity: 0.9;
 }
 
@@ -57,9 +87,28 @@ hr {
 
 /* Add a blue text color to links */
 a {
-  color: dodgerblue;
+  color: #001387;
 }
 
+.emailContainer {
+  margin-left: 45px;
+}
+
+.nomContainer {
+  margin-left: 52px;
+}
+
+.prenomContainer {
+  margin-left: 35px;
+}
+
+.adresseContainer {
+  margin-left: 34px;
+}
+
+.siretContainer {
+  margin-left: 65px;
+}
 /* Set a grey background color and center the text of the "sign in" section */
 .signin {
   background-color: #f1f1f1;
@@ -71,20 +120,30 @@ a {
     <h1 style="text-align:center">Inscription</h1>
 
     {{ form_start(registrationForm) }}
-    
+    <div class="inscriptionContainer">
+    <div class="emailContainer">
         {{ form_row(registrationForm.email) }}
+    </div>
         {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+            label: 'Mot de passe'
         }) }}
-
+    <div class="nomContainer">
         {{ form_row(registrationForm.Nom) }}
+    </div>
+    <div class="prenomContainer">
         {{ form_row(registrationForm.Prenom) }}
+    </div>
+    <div class="adresseContainer">
         {{ form_row(registrationForm.Adresse) }}
+    </div>
+    <div class="siretContainer">
         {{ form_row(registrationForm.Siret) }}
+    </div>
         {{ form_row(registrationForm.nbreStagiaires) }}
         {{ form_row(registrationForm.agreeTerms) }}
+</div>
 
-        <button type="submit" class="registerbtn">Update</button>
+        <button type="submit" class="registerbtn">Modifier</button>
     {{ form_end(registrationForm) }}
   
 {% endblock %}
