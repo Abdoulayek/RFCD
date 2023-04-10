@@ -1,73 +1,70 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription sur l'application RFCD !{% endblock %}
 
 {% block body %}
 
 <style>
+
 body {
     background-color : #001387;
 }
 
-* {box-sizing: border-box}
-
-/* Add padding to containers */
 .container {
   padding: 16px;
 }
+
 label,h1 {
     color : white;
 }
+
 .inscriptionContainer{
   margin-left: 35%;
 }
-/* Full-width input fields */
+
 input[type=text] {
+  font-family: Arial;
   width: 30%;
   border-radius: 10px;
-  height: 20px;
+  height: 10px;
   padding: 15px;
   margin: 10px;
   display: inline-block;
   border: none;
-  
 }
 
 input[type=password] {
   width: 28.5%;
   border-radius: 10px;
-  height: 20px;
+  height: 10px;
   padding: 15px;
   margin: 10px;
   display: inline-block;
-  border: none;
-  
+  border: none; 
 }
 
 input[type=number] {
   width: 120px;
   border-radius: 10px;
-  height: 20px;
+  height: 10px;
   padding: 15px;
   margin: 10px;
   display: inline-block;
   border: none;
-  
 }
 
 input[type=text]:focus, input[type=password]:focus {
-  
   outline: none;
 }
 
-/* Overwrite default styles of hr */
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
 
-/* Set a style for the submit/register button */
 .registerbtn {
+  font-family: Arial;
+  font-weight: bold;
   background-color: #FFFF;
   color: #001387;
   padding: 16px 20px;
@@ -85,7 +82,6 @@ hr {
   opacity:1;
 }
 
-/* Add a blue text color to links */
 a {
   color: #001387;
 }
@@ -109,16 +105,15 @@ a {
 .siretContainer {
   margin-left: 65px;
 }
-/* Set a grey background color and center the text of the "sign in" section */
+
 .signin {
+  margin-top: 20px;
   background-color: #f1f1f1;
   text-align: center;
 }
 </style>
 
-
     <h1 style="text-align:center">Inscription</h1>
-
     {{ form_start(registrationForm) }}
     <div class="inscriptionContainer">
     <div class="emailContainer">
@@ -141,10 +136,10 @@ a {
     </div>
         {{ form_row(registrationForm.nbreStagiaires) }}
         {{ form_row(registrationForm.agreeTerms) }}
-</div>
-        <button type="submit" class="registerbtn">Register</button>
+    </div>
+        <button type="submit" class="registerbtn">Inscription</button>
     {{ form_end(registrationForm) }}
     <div class="container signin">
-    <p>Already have an account? <a href="{{path('app_login')}}">Sign in</a>.</p>
+    <p>Avez-vous déjà un compte? <a href="{{path('app_login')}}">Connexion</a></p>
   </div>
 {% endblock %}

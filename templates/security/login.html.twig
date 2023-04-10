@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}Connexion sur l'application RFCD !{% endblock %}
 
 {% block body %}
 <style>
@@ -8,10 +8,12 @@
 body {
     background-color: #001387;
 }
+
 form {
     margin-top : 50px;
     margin-left: 42%;
 }
+
 label, h1{
     color: white;
 }
@@ -32,11 +34,11 @@ input[type=email], input[type=password]{
   resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
 }
 
-/* Style the submit button with a specific background color etc */
 button {
   background-color: #FFFF;
   color: #001387;
   padding: 12px 20px;
+  font-weight: bold;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -46,15 +48,14 @@ itemContainer {
     margin-left: 50px;
 }
 
-/* When moving the mouse over the submit button, add a darker green color */
 button:hover {
-  background-color: #45a049;
+  background-color: #FFFF;
 }
 
 </style>
 
     <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-<form method="post">
+    <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -64,6 +65,7 @@ button:hover {
             You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
+
     <label for="inputEmail">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
     <label for="inputPassword">Mot de passe</label>

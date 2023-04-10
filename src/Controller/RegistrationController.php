@@ -82,12 +82,10 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/stage', name: 'app_stage')]
+    #[Route('/ajout_stagiaire', name: 'app_stage')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
-       
         $stagiaire = new Stagiaires();
-       
         $form = $this->createForm(StagiaireFormType::class, $stagiaire);
         $form->handleRequest($request);
         if ($form->isSubmitted())
