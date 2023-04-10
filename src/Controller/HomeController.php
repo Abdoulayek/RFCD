@@ -51,14 +51,6 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/certificateur', name: 'app_certificateur')]
-    public function certificateur(): Response
-    {
-        return $this->render('certificateur/index.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
-
     #[Route('/contact', name: 'app_contact')]
     public function contact(): Response
     {

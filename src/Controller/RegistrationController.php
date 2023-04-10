@@ -40,7 +40,6 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
             $user->setPassword(
             $userPasswordHasher->hashPassword(
                     $user,
@@ -50,8 +49,6 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
-
             return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
@@ -88,7 +85,7 @@ class RegistrationController extends AbstractController
         $stagiaire = new Stagiaires();
         $form = $this->createForm(StagiaireFormType::class, $stagiaire);
         $form->handleRequest($request);
-        if ($form->isSubmitted())
+        if ($form->isValid() && $form->isSubmitted())
         {
             $user = $this->getUser();
             $stagiaire->setRelationuser($user);

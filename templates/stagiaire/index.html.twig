@@ -9,21 +9,19 @@ body {
     background-color : #001387;
 }
 
-* {box-sizing: border-box}
-
-/* Add padding to containers */
 .container {
   padding: 16px;
 }
+
 label,h1 {
     color : white;
     font-family: Arial;
 }
-/* Full-width input fields */
+
 input[type=text] {
   width: 20%;
   border-radius: 10px;
-  height: 20px;
+  height: 5px;
   font-family: Arial;
   padding: 15px;
   margin: 10px;
@@ -45,7 +43,7 @@ input[type=text]:focus, input[type=password]:focus {
   cursor: pointer;
   font-family: Arial;
   border-radius: 15px;
-  margin-left: 40px;
+  margin-left: 60px;
   margin-top: 20px;
   width: 250px;
   opacity: 0.9;
@@ -70,8 +68,18 @@ a {
 .prenomContainer {
   margin-left: 35px;
 }
+
 form {
-  margin-left: 40%;
+  margin-left: 37%;
+  margin-top: 40px;
+}
+
+button {
+  font-weight: bold;
+}
+
+.profilContainer {
+  margin-left: -70px;
 }
 </style>
 
@@ -88,9 +96,11 @@ form {
         <div class="prenomContainer">
         {{ form_row(stagiaireForm.Prenom) }}
         </div>
+        <div class="profilContainer">
         {{ form_row(stagiaireForm.Profil, {
             label: 'Certification souhaitée'
         }) }}
+        </div>
         <button type="submit" class="registerbtn">Ajouter</button>
     {{ form_end(stagiaireForm) }}
     <a href="{{path('app_liste')}}">Retour à la liste</a>
