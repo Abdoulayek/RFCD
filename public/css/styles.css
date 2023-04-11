@@ -27,6 +27,10 @@ ul {
       margin-left: 80%;
   }
 
+  .mentions {
+    color: white;
+  }
+
   .footer {
     position: fixed;
     left: 0;
@@ -36,4 +40,5 @@ ul {
     color: white;
     text-align: center;
   }
+
 

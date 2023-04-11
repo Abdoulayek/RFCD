@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-  padding: 16px;
+  padding: 10px;
 }
 
 label,h1 {
@@ -107,9 +107,23 @@ a {
 }
 
 .signin {
-  margin-top: 20px;
-  background-color: #f1f1f1;
-  text-align: center;
+
+}
+
+.cadre {
+   height: 400px;
+   width: 400px;
+   background-color: black;
+}
+
+.goToConnexion {
+   color: white;
+   margin-left: 40%;
+}
+
+.connexionLink {
+  color: white;
+  font-weight: bold;
 }
 </style>
 
@@ -140,7 +154,7 @@ a {
         <button type="submit" class="registerbtn">Inscription</button>
     {{ form_end(registrationForm) }}
     <div class="container signin">
-    <p>Avez-vous déjà un compte? <a href="{{path('app_login')}}">Connexion</a></p>
+    <p class="goToConnexion">Avez-vous déjà un compte? <a class="connexionLink" href="{{path('app_login')}}">Connexion</a></p>
   </div>
 {% endblock %}
 
