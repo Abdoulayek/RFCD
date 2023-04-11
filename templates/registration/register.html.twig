@@ -1,102 +1,147 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription sur l'application RFCD !{% endblock %}
 
 {% block body %}
 
 <style>
+
 body {
     background-color : #001387;
 }
 
-* {box-sizing: border-box}
-
-/* Add padding to containers */
 .container {
   padding: 16px;
 }
-h1 {
+
+label,h1 {
     color : white;
-    margin-left: 10%;
 }
-label{
-    color : white;
-    margin-left: 30%;
+
+.inscriptionContainer{
+  margin-left: 35%;
 }
-/* Full-width input fields */
-input[type=text], input[type=password], input[type=number] {
-  width: 20%;
-  padding: 5px;
+
+input[type=text] {
+  font-family: Arial;
+  width: 30%;
+  border-radius: 10px;
+  height: 10px;
+  padding: 15px;
   margin: 10px;
   display: inline-block;
   border: none;
-  height : 10%;
+}
+
+input[type=password] {
+  width: 28.5%;
+  border-radius: 10px;
+  height: 10px;
+  padding: 15px;
+  margin: 10px;
+  display: inline-block;
+  border: none; 
+}
+
+input[type=number] {
+  width: 120px;
+  border-radius: 10px;
+  height: 10px;
+  padding: 15px;
+  margin: 10px;
+  display: inline-block;
+  border: none;
 }
 
 input[type=text]:focus, input[type=password]:focus {
-  
   outline: none;
 }
 
-/* Overwrite default styles of hr */
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
 
-/* Set a style for the submit/register button */
 .registerbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 10px;
-  margin-top : 20px;
+  font-family: Arial;
+  font-weight: bold;
+  background-color: #FFFF;
+  color: #001387;
+  padding: 16px 20px;
+  margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 10%;
+  border-radius: 15px;
+  margin-left: 42%;
+  margin-top: 20px;
+  width: 250px;
   opacity: 0.9;
-  margin-left : 40%;
 }
 
 .registerbtn:hover {
   opacity:1;
 }
 
-/* Add a blue text color to links */
 a {
-  color: dodgerblue;
+  color: #001387;
 }
 
-/* Set a grey background color and center the text of the "sign in" section */
+.emailContainer {
+  margin-left: 45px;
+}
+
+.nomContainer {
+  margin-left: 52px;
+}
+
+.prenomContainer {
+  margin-left: 35px;
+}
+
+.adresseContainer {
+  margin-left: 34px;
+}
+
+.siretContainer {
+  margin-left: 65px;
+}
+
 .signin {
+  margin-top: 20px;
   background-color: #f1f1f1;
   text-align: center;
 }
-
-form {
-
-  margin-top : 50px;
-}
 </style>
 
-
-
+    <h1 style="text-align:center">Inscription</h1>
     {{ form_start(registrationForm) }}
-    
+    <div class="inscriptionContainer">
+    <div class="emailContainer">
         {{ form_row(registrationForm.email) }}
+    </div>
         {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+            label: 'Mot de passe'
         }) }}
-
+    <div class="nomContainer">
         {{ form_row(registrationForm.Nom) }}
+    </div>
+    <div class="prenomContainer">
         {{ form_row(registrationForm.Prenom) }}
+    </div>
+    <div class="adresseContainer">
         {{ form_row(registrationForm.Adresse) }}
+    </div>
+    <div class="siretContainer">
         {{ form_row(registrationForm.Siret) }}
-        
+    </div>
         {{ form_row(registrationForm.nbreStagiaires) }}
         {{ form_row(registrationForm.agreeTerms) }}
-
+    </div>
         <button type="submit" class="registerbtn">Inscription</button>
     {{ form_end(registrationForm) }}
+    <div class="container signin">
+    <p>Avez-vous déjà un compte? <a href="{{path('app_login')}}">Connexion</a></p>
+  </div>
 {% endblock %}
 
 

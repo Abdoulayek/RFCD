@@ -40,7 +40,6 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
             $user->setPassword(
             $userPasswordHasher->hashPassword(
                     $user,
@@ -50,8 +49,6 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
-
             return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
@@ -82,15 +79,13 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/stage', name: 'app_stage')]
+    #[Route('/ajout_stagiaire', name: 'app_stage')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
-       
         $stagiaire = new Stagiaires();
-       
         $form = $this->createForm(StagiaireFormType::class, $stagiaire);
         $form->handleRequest($request);
-        if ($form->isSubmitted())
+        if ($form->isValid() && $form->isSubmitted())
         {
             $user = $this->getUser();
             $stagiaire->setRelationuser($user);
@@ -106,13 +101,11 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/liste/{id}', name: 'app_liste')]
+    #[Route('/liste', name: 'app_liste')]
 
-    public function action(ManagerRegistry $doctrine, $id): Response
+    public function action(ManagerRegistry $doctrine): Response
     {
-        $user = $doctrine->getRepository(User::class)->find($id);
-        $liste = $doctrine->getRepository(Stagiaires::class)->findBy(['Relationuser'=>$user]);
-
+     $liste = $doctrine->getRepository(Stagiaires::class)->findAll();
     return $this->render('stagiaire/show.html.twig', [
         'liste' => $liste
     ]);

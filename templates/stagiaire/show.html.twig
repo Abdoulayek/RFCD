@@ -11,22 +11,25 @@
 
 fieldset {
     margin-top : 80px;
-    border : 2px solid white;
+    border : 2px solid;
+    border-color: #001387;
     width : 150px;
     height : 30px;
+    border-radius: 15px;
+    background-color: white;
     text-align : center;
     margin-left : 45%;
 }
-/* Links inside the navbar */
+
 .navbar a {
   float: left;
   font-size: 16px;
   color: white;
   text-align: center;
   padding: 14px 16px;
-  text-decoration: none;
-  
+  text-decoration: none; 
 }
+
 h1{
   text-align: center; 
   margin-top : 10px;
@@ -35,30 +38,33 @@ h1{
 body {
     background : #001387;
 }
-h1, fieldset, a {
+h1, a {
     color : white ;
 }
 
-.al {
-   
+.listeStagiaires {
    margin-left : 44%;
-    
 }
+
 a:hover {
     color : white;
 }
+
 </style>
 
-<h1>Liste des Stagiaires <a href="{{path('app_stage')}}" class="al">+</a></h1>
-
+<h1>Liste des Stagiaires <a href="{{path('app_stage')}}" class="listeStagiaires">+</a></h1>
 {% for liste in liste %}
-
+{%if app.user.id == liste.relationuser.id %}
 <table>
 <fieldset>
-{{liste.nom}}     {{liste.prenom}}
+{{liste.nom}} 
+{{liste.prenom}}
+<div>
+{{liste.profil}}
+</div>
 </fieldset>
 </table>
-
+{%endif%}
 {%endfor%}
 <br />
 

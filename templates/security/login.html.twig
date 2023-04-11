@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connexion sur l'application RFCD !{% endblock %}
 
 {% block body %}
 <style>
@@ -8,9 +8,12 @@
 body {
     background-color: #001387;
 }
+
 form {
     margin-top : 50px;
+    margin-left: 42%;
 }
+
 label, h1{
     color: white;
 }
@@ -19,46 +22,40 @@ h1{
     text-align: center;
 }
 
-form {
-
-    margin-left : 30%;
-    margin-top : 100px;
-}
-
 input[type=email], input[type=password]{
-  width: 40%; /* Full width */
-  display:block;
+  width: 30%; /* Full width */
+  display: grid;
   padding: 12px; /* Some padding */ 
   border: 1px solid #ccc; /* Gray border */
-  border-radius: 4px; /* Rounded borders */
+  border-radius: 10px; /* Rounded borders */
   box-sizing: border-box; /* Make sure that padding and width stays in place */
   margin-top: 6px; /* Add a top margin */
   margin-bottom: 16px; /* Bottom margin */
   resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
 }
 
-/* Style the submit button with a specific background color etc */
 button {
-  background-color: #04AA6D;
-  color: white;
+  background-color: #FFFF;
+  color: #001387;
   padding: 12px 20px;
+  font-weight: bold;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-/* When moving the mouse over the submit button, add a darker green color */
-button:hover {
-  background-color: #45a049;
+itemContainer {
+    margin-left: 50px;
 }
 
-a, p {
-
-        color: white;
+button:hover {
+  background-color: #FFFF;
 }
 
 </style>
-<form method="post">
+
+    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+    <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -71,29 +68,16 @@ a, p {
 
     <label for="inputEmail">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
+    <label for="inputPassword">Mot de passe</label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
     <button type="submit">
         Connexion
     </button>
-       <div class="container signin">
-       <p>Vous souhaitez vous inscrire ? <a href="{{path('app_register')}}">Inscription</a></p>
-  </div>
 </form>
 {% endblock %}
+
