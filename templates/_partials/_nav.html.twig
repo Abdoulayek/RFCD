@@ -1,14 +1,4 @@
-<style>
-
-profi{
-    width: 50px;
-    height : 50px;
-}
-</style>
-
-
- 
- {% if app.user %}
+{% if app.user %}
   <ul>  
   <li><a href="{{path('app_account')}}">Profil</a></li>
   <li><a href="{{path('app_liste')}}">Mes Stagiaires</a></li>

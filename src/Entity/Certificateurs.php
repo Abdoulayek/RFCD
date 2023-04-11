@@ -27,6 +27,8 @@ class Certificateurs
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'certificateurs')]
     private $RelationCertificateur;
 
+    
+
     public function __construct()
     {
         $this->RelationCertificateur = new ArrayCollection();
@@ -93,6 +95,18 @@ class Certificateurs
     public function removeRelationCertificateur(User $relationCertificateur): self
     {
         $this->RelationCertificateur->removeElement($relationCertificateur);
+
+        return $this;
+    }
+
+    public function getPr(): ?string
+    {
+        return $this->Pr;
+    }
+
+    public function setPr(string $Pr): self
+    {
+        $this->Pr = $Pr;
 
         return $this;
     }

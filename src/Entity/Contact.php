@@ -24,6 +24,8 @@ class Contact
     #[ORM\Column(type: 'string', length: 255)]
     private $Email;
 
+  
+
     #[ORM\Column(type: 'string', length: 255)]
     private $Certificateur_choisi;
 
@@ -129,6 +131,18 @@ class Contact
     public function setRelationCertif(?Certificateurs $RelationCertif): self
     {
         $this->RelationCertif = $RelationCertif;
+
+        return $this;
+    }
+
+    public function getP(): ?string
+    {
+        return $this->P;
+    }
+
+    public function setP(string $P): self
+    {
+        $this->P = $P;
 
         return $this;
     }

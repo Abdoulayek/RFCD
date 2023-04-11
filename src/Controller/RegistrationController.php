@@ -91,6 +91,9 @@ class RegistrationController extends AbstractController
             $stagiaire->setRelationuser($user);
             $entityManager->persist($stagiaire);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Votre stagiaire a été ajouté');
+        return $this->redirectToRoute('app_stage');
         }
   
         return $this->render('stagiaire/index.html.twig', [
@@ -102,7 +105,7 @@ class RegistrationController extends AbstractController
 
     public function action(ManagerRegistry $doctrine): Response
     {
-        $liste = $doctrine->getRepository(Stagiaires::class)->findAll();
+     $liste = $doctrine->getRepository(Stagiaires::class)->findAll();
     return $this->render('stagiaire/show.html.twig', [
         'liste' => $liste
     ]);
