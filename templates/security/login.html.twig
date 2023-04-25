@@ -44,6 +44,10 @@ button {
   cursor: pointer;
 }
 
+.lostPassword{
+    color: white;
+}
+
 itemContainer {
     margin-left: 50px;
 }
@@ -78,6 +82,7 @@ button:hover {
     <button type="submit">
         Connexion
     </button>
+    <p><a href="{{path('app_forgot_password_request')}}" class="lostPassword">Mot de passe oublié</a></p>
 </form>
 {% endblock %}
 

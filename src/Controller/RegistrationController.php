@@ -85,7 +85,7 @@ class RegistrationController extends AbstractController
         $stagiaire = new Stagiaires();
         $form = $this->createForm(StagiaireFormType::class, $stagiaire);
         $form->handleRequest($request);
-        if ($form->isValid() && $form->isSubmitted())
+        if ($form->isSubmitted())
         {
             $user = $this->getUser();
             $stagiaire->setRelationuser($user);
