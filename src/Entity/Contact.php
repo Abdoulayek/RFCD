@@ -16,67 +16,52 @@ class Contact
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $Nom;
+    private $name;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $Prenom;
+    private $email;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $Email;
+    private $message;
 
-  
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private $Certificateur_choisi;
-
-    #[ORM\OneToMany(mappedBy: 'contact', targetEntity: User::class)]
-    private $RelationUser;
-
-    #[ORM\OneToOne(targetEntity: Certificateurs::class, cascade: ['persist', 'remove'])]
-    private $RelationCertif;
-
-    public function __construct()
-    {
-        $this->RelationUser = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getName(): ?string
     {
-        return $this->Nom;
+        return $this->name;
     }
 
-    public function setNom(string $Nom): self
+    public function setName(string $name): self
     {
-        $this->Nom = $Nom;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getPrenom(): ?string
+    public function getMessage(): ?string
     {
-        return $this->Prenom;
+        return $this->message;
     }
 
-    public function setPrenom(string $Prenom): self
+    public function setMessage(string $message): self
     {
-        $this->Prenom = $Prenom;
+        $this->message = $message;
 
         return $this;
     }
 
     public function getEmail(): ?string
     {
-        return $this->Email;
+        return $this->email;
     }
 
-    public function setEmail(string $Email): self
+    public function setEmail(string $email): self
     {
-        $this->Email = $Email;
+        $this->email = $email;
 
         return $this;
     }

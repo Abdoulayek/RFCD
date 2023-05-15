@@ -1,70 +1,58 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Connexion{% endblock %}
-
+{% block title %}Formulaire de contact !{% endblock %}
 {% block body %}
 <style>
 
-/* Style inputs with type="text", select elements and textareas */
-input[type=text],input[type=email] {
-  width: 100%; /* Full width */
-  padding: 12px; /* Some padding */ 
-  border: 1px solid white; /* Gray border */
-  border-radius: 4px; /* Rounded borders */
-  box-sizing: border-box; /* Make sure that padding and width stays in place */
-  margin-top: 6px; /* Add a top margin */
-  margin-bottom: 16px; /* Bottom margin */
-  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+.form-group {
+  margin-bottom: 20px;
 }
 
-/* Style the submit button with a specific background color etc */
-input[type=submit]{
-    background-color: #001387;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 300px;
-    margin-left: 20%;
+label {
+  display: block;
+  font-weight: bold;
 }
 
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 40%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 
-/* Add a background color and some padding around the form */
-.container {
-    margin-top: 50px;
-  border-radius: 5px;
+textarea {
+  height: 150px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
   background-color: #001387;
-  padding: 20px;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-label{
-  color : white;
+button[type="submit"]:hover {
+  background-color: #45a049;
 }
-
-
 </style>
+{% block content %}
+    <h1>Contactez-nous</h1>
 
- <div class="container">
-  <form action="action_page.php">
+    {% if app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ app.flashes('success')[0] }}
+        </div>
+    {% endif %}
 
-    <label for="fname">Prenom</label>
-    <input type="text" id="fname" name="firstname" placeholder="Prenom">
+    {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.message) }}
 
-    <label for="lname">Nom</label>
-    <input type="text" id="lname" name="lastname" placeholder="Nom">
-
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Email">
-   
-
-    <label for="subject">Message</label>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
-    <input type="submit" value="Envoyer">
-
-  </form>
-</div>
-
-
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    {{ form_end(form) }}
+{% endblock %}
 {% endblock %}

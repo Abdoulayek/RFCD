@@ -3,9 +3,15 @@
 namespace App\Controller;
 
 use App\Form\RegistrationFormType;
+use App\Form\ContactType;
 use App\Entity\User;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Response;
+use App\Entity\Contact;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
@@ -60,11 +66,38 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/contact', name: 'app_contact')]
-    public function contact(): Response
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact(Request $request, MailerInterface $mailer): Response
     {
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Envoyer l'e-mail de contact
+            $message = (new Email('Nouveau message de contact'))
+                ->setFrom($contact->getEmail())
+                ->setTo('abdoulayekante863@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'emails/contact.html.twig',
+                        ['contact' => $contact]
+                    ),
+                    'text/html'
+                );
+
+            $mailer->send($message);
+
+            $this->addFlash('success', 'Votre message a été envoyé avec succès.');
+
+            return $this->redirectToRoute('contact');
+        }
+
         return $this->render('contact/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'form' => $form->createView(),
         ]);
     }
+
 }

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block title %} Admin Dashboard !{% endblock %}
+{% block body %}
+<style>
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .table-header {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        text-align: center;
+
+    }
+
+    .table td, .table th {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        text-align: center;
+
+    }
+
+    .table td:last-child, .table th:last-child {
+        border-right: none;
+    }
+
+    .table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+</style>
+{% block content %}
+    <h1>Tableau de bord d'administration</h1>
+
+    <p>Bienvenue dans le tableau de bord d'administration.</p>
+
+    <h2>Stagiaires :</h2>
+    <table class="table">
+    <thead>
+        <tr>
+            <th class="table-header">Nom</th>
+            <th class="table-header">Email</th>
+            <th class="table-header">Certification</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for element in elements %}
+            <tr>
+                <td>{{ element.nom }}</td>
+                <td>{{ element.email }}</td>
+                <td>{{ element.profil }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
+{% endblock %}
