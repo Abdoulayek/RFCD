@@ -9,10 +9,6 @@
         {% block stylesheets %}
             
         {% endblock %}
-
-        {% block javascripts %}
-            
-        {% endblock %}
     </head>
     <body>
     {% include "_partials/_nav.html.twig" %}
@@ -24,6 +20,19 @@
     </body>
 
     <div class="footer">
+    <div id="cookie-banner">
+    <p>Notre site utilise des cookies. En poursuivant votre navigation, vous acceptez notre utilisation des cookies.</p>
+    <button id="accept-cookie">Accepter</button>
+    {% block javascripts %}
+        <script>
+            var acceptButton = document.getElementById('accept-cookie');
+            acceptButton.addEventListener('click', function() {
+            document.cookie = 'cookie_accept=true; expires=Fri, 31 Dec 9999 23:59:59 GMT';
+            document.getElementById('cookie-banner').style.display = 'none';
+    });
+        </script>
+        {% endblock %}
+    </div>
        <p>  ©2022 </p>
       </div>
 </html>
