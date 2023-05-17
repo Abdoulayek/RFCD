@@ -8,6 +8,8 @@ use App\Entity\Stagiaires;
 use App\Form\StagiaireFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use App\Form\RegistrationFormType;
+use Symfony\Component\HttpFoundation\Response;
+use App\Repository\StagiairesRepository;
 use App\Security\UserAuthenticator;
 use App\Repository\UserRepository;
 use Symfony\Component\Mime\Email;
@@ -15,7 +17,6 @@ use Symfony\Component\Mailer\MailerInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -130,4 +131,14 @@ public function contact(Request $request, MailerInterface $mailer)
         'our_form' => $form->createView()
     ]);
 }
+
+  #[Route('/admin', name: 'app_admin')]
+    public function dashboard(StagiairesRepository $StagiairesRepository): Response
+    {
+        $elements = $StagiairesRepository->findAll();
+        return $this->render('admin/index.html.twig', [
+            'controller_name' => 'AdminController',
+            'elements' => $elements,
+        ]);
+    }
 }
