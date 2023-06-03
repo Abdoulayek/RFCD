@@ -4,9 +4,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-        <style>
+    <style>
         body {
             background-color: #001387;
+            margin-bottom: 60px; /* Hauteur du footer */
         }
 
         .container {
@@ -17,15 +18,15 @@
             color: black;
         }
 
-        h1{
-          color: white;
+        h1 {
+            color: white;
         }
 
         .inscriptionContainer {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 50px;
+            margin-top: 10px;
         }
 
         .cadre {
@@ -79,7 +80,7 @@
         .goToConnexion {
             color: white;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 5px;
         }
 
         .connexionLink {
@@ -91,6 +92,9 @@
 
 {% block body %}
     <h1 style="text-align:center">Inscription</h1>
+        <div class="container signin">
+        <p class="goToConnexion">Avez-vous déjà un compte? <a class="connexionLink" href="{{ path('app_login') }}">Connexion</a></p>
+    </div>
     <div class="inscriptionContainer">
         <div class="cadre">
             {{ form_start(registrationForm) }}
@@ -107,8 +111,5 @@
             <button type="submit" class="registerbtn">Inscription</button>
             {{ form_end(registrationForm) }}
         </div>
-    </div>
-    <div class="container signin">
-        <p class="goToConnexion">Avez-vous déjà un compte? <a class="connexionLink" href="{{ path('app_login') }}">Connexion</a></p>
     </div>
 {% endblock %}
