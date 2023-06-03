@@ -6,103 +6,116 @@
 
 <style>
 body {
-    background-color : #001387;
+    background-color: #001387;
 }
 
 .container {
-  padding: 16px;
+    padding: 10px;
 }
 
-label,h1 {
-    color : white;
+label,
+p {
+    color: black;
+}
+
+h1 {
+    color: black;
+    margin-left: 20%;
+}
+
+.inscriptionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.cadre {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input[type=text],
+input[type=password],
+input[type=number] {
     font-family: Arial;
+    width: 250px;
+    border-radius: 5px;
+    height: 30px;
+    padding: 5px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid black;
 }
 
-input[type=text] {
-  width: 20%;
-  border-radius: 10px;
-  height: 5px;
-  font-family: Arial;
-  padding: 15px;
-  margin: 10px;
-  display: inline-block;
-  border: none;  
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=number]:focus {
+    outline: none;
 }
 
-
-input[type=text]:focus, input[type=password]:focus {
-  outline: none;
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
 }
 
 .registerbtn {
-  background-color: #FFFF;
-  color: #001387;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  font-family: Arial;
-  border-radius: 15px;
-  margin-left: 60px;
-  margin-top: 20px;
-  width: 250px;
-  opacity: 0.9;
+    font-family: Arial;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px auto;
+    display: block;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    opacity: 0.9;
 }
 
 .registerbtn:hover {
-  opacity:1;
+    opacity: 1;
 }
 
 a {
-  color : white;
+    color: white;
 }
 
-.emailContainer {
-  margin-left: 45px;
+.goToConnexion {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
 }
 
-.nomContainer {
-  margin-left: 52px;
-}
-
-.prenomContainer {
-  margin-left: 35px;
-}
-
-form {
-  margin-left: 37%;
-  margin-top: 40px;
-}
-
-button {
-  font-weight: bold;
-}
-
-.profilContainer {
-  margin-left: -70px;
+.connexionLink {
+    color: white;
+    font-weight: bold;
 }
 </style>
 
-
-<h1 style="text-align:center">Ajout de stagiaire</h1>
-        <div class="form">
+<div class="inscriptionContainer">
+    <div class="cadre">
+        <h1>Ajout de stagiaire</h1>
         {{ form_start(stagiaireForm) }}
         <div class="emailContainer">
-        {{ form_row(stagiaireForm.Email) }}
+            {{ form_row(stagiaireForm.Email) }}
         </div>
         <div class="nomContainer">
-        {{ form_row(stagiaireForm.Nom) }}
+            {{ form_row(stagiaireForm.Nom) }}
         </div>
         <div class="prenomContainer">
-        {{ form_row(stagiaireForm.Prenom) }}
+            {{ form_row(stagiaireForm.Prenom) }}
         </div>
         <div class="profilContainer">
-        {{ form_row(stagiaireForm.Profil, {
-            label: 'Certification souhaitée'
-        }) }}
+            {{ form_row(stagiaireForm.Profil, {
+                label: 'Certification souhaitée'
+            }) }}
         </div>
         <button type="submit" class="registerbtn">Ajouter</button>
-    {{ form_end(stagiaireForm) }}
-    <a href="{{path('app_liste')}}">Retour à la liste</a>
+        {{ form_end(stagiaireForm) }}
+        <a href="{{ path('app_liste') }}">Retour à la liste</a>
+    </div>
 </div>
+
 {% endblock %}

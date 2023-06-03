@@ -10,15 +10,15 @@
 }
 
 fieldset {
-    margin-top : 80px;
-    border : 2px solid;
+    margin-top: 80px;
+    border: 2px solid;
     border-color: #001387;
-    width : 150px;
-    height : 30px;
+    width: 150px;
+    height: 30px;
     border-radius: 15px;
     background-color: white;
-    text-align : center;
-    margin-left : 45%;
+    text-align: center;
+    margin-left: 45%;
 }
 
 .navbar a {
@@ -30,42 +30,73 @@ fieldset {
   text-decoration: none; 
 }
 
-h1{
+h1 {
   text-align: center; 
-  margin-top : 10px;
+  margin-top: 10px;
 }
 
 body {
-    background : #001387;
+    background: #001387;
 }
+
 h1, a {
-    color : white ;
+    color: white;
 }
 
 .listeStagiaires {
-   margin-left : 44%;
+   margin-left: 44%;
 }
 
 a:hover {
-    color : white;
+    color: white;
 }
 
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  width: 60%;
+  margin-top: 20px;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid white;
+}
+
+th {
+  background-color: #001387;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #001387;
+}
+
+tr:nth-child(odd) {
+  background-color: #0024b2;
+}
 </style>
 
-<h1>Liste des Stagiaires <a href="{{path('app_stage')}}" class="listeStagiaires">+</a></h1>
-{% for liste in liste %}
-{%if app.user.id == liste.relationuser.id %}
+<h1>Liste des Stagiaires <a href="{{ path('app_stage') }}" class="listeStagiaires">+</a></h1>
 <table>
-<fieldset>
-{{liste.nom}} 
-{{liste.prenom}}
-<div>
-{{liste.profil}}
-</div>
-</fieldset>
+  <tr>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Certification</th>
+  </tr>
+  {% for liste in liste %}
+    {% if app.user.id == liste.relationuser.id %}
+      <tr>
+        <td>{{ liste.nom }}</td>
+        <td>{{ liste.prenom }}</td>
+        <td>{{ liste.profil }}</td>
+      </tr>
+    {% endif %}
+  {% endfor %}
 </table>
-{%endif%}
-{%endfor%}
 <br />
 
-{%endblock%}
+{% endblock %}

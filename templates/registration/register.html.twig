@@ -2,161 +2,113 @@
 
 {% block title %}Inscription sur l'application RFCD !{% endblock %}
 
-{% block body %}
+{% block stylesheets %}
+    {{ parent() }}
+        <style>
+        body {
+            background-color: #001387;
+        }
 
-<style>
+        .container {
+            padding: 10px;
+        }
 
-body {
-    background-color : #001387;
-}
+        label, p {
+            color: black;
+        }
 
-.container {
-  padding: 10px;
-}
+        h1{
+          color: white;
+        }
 
-label,h1 {
-    color : white;
-}
+        .inscriptionContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
 
-.inscriptionContainer{
-  margin-left: 35%;
-}
+        .cadre {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
 
-input[type=text] {
-  font-family: Arial;
-  width: 30%;
-  border-radius: 10px;
-  height: 10px;
-  padding: 15px;
-  margin: 10px;
-  display: inline-block;
-  border: none;
-}
+        input[type=text], input[type=password], input[type=number] {
+            font-family: Arial;
+            width: 250px;
+            border-radius: 5px;
+            height: 30px;
+            padding: 5px;
+            margin: 10px;
+            display: inline-block;
+            border: 1px solid black;
+        }
 
-input[type=password] {
-  width: 28.5%;
-  border-radius: 10px;
-  height: 10px;
-  padding: 15px;
-  margin: 10px;
-  display: inline-block;
-  border: none; 
-}
+        input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
+            outline: none;
+        }
 
-input[type=number] {
-  width: 120px;
-  border-radius: 10px;
-  height: 10px;
-  padding: 15px;
-  margin: 10px;
-  display: inline-block;
-  border: none;
-}
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
 
-input[type=text]:focus, input[type=password]:focus {
-  outline: none;
-}
+        .registerbtn {
+            font-family: Arial;
+            font-weight: bold;
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px auto;
+            display: block;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            opacity: 0.9;
+        }
 
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
+        .registerbtn:hover {
+            opacity: 1;
+        }
 
-.registerbtn {
-  font-family: Arial;
-  font-weight: bold;
-  background-color: #FFFF;
-  color: #001387;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  border-radius: 15px;
-  margin-left: 42%;
-  margin-top: 20px;
-  width: 250px;
-  opacity: 0.9;
-}
+        a {
+            color: white;
+        }
 
-.registerbtn:hover {
-  opacity:1;
-}
+        .goToConnexion {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+        }
 
-a {
-  color: #001387;
-}
-
-.emailContainer {
-  margin-left: 45px;
-}
-
-.nomContainer {
-  margin-left: 52px;
-}
-
-.prenomContainer {
-  margin-left: 35px;
-}
-
-.adresseContainer {
-  margin-left: 34px;
-}
-
-.siretContainer {
-  margin-left: 65px;
-}
-
-.signin {
-
-}
-
-.cadre {
-   height: 400px;
-   width: 400px;
-   background-color: black;
-}
-
-.goToConnexion {
-   color: white;
-   margin-left: 40%;
-}
-
-.connexionLink {
-  color: white;
-  font-weight: bold;
-}
-</style>
-
-    <h1 style="text-align:center">Inscription</h1>
-    {{ form_start(registrationForm) }}
-    <div class="inscriptionContainer">
-    <div class="emailContainer">
-        {{ form_row(registrationForm.email) }}
-    </div>
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Mot de passe'
-        }) }}
-    <div class="nomContainer">
-        {{ form_row(registrationForm.Nom) }}
-    </div>
-    <div class="prenomContainer">
-        {{ form_row(registrationForm.Prenom) }}
-    </div>
-    <div class="adresseContainer">
-        {{ form_row(registrationForm.Adresse) }}
-    </div>
-    <div class="siretContainer">
-        {{ form_row(registrationForm.Siret) }}
-    </div>
-        {{ form_row(registrationForm.nbreStagiaires) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-    </div>
-        <button type="submit" class="registerbtn">Inscription</button>
-    {{ form_end(registrationForm) }}
-    <div class="container signin">
-    <p class="goToConnexion">Avez-vous déjà un compte? <a class="connexionLink" href="{{path('app_login')}}">Connexion</a></p>
-  </div>
+        .connexionLink {
+            color: white;
+            font-weight: bold;
+        }
+    </style>
 {% endblock %}
 
-
-
+{% block body %}
+    <h1 style="text-align:center">Inscription</h1>
+    <div class="inscriptionContainer">
+        <div class="cadre">
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Mot de passe'
+            }) }}
+            {{ form_row(registrationForm.Nom) }}
+            {{ form_row(registrationForm.Prenom) }}
+            {{ form_row(registrationForm.Adresse) }}
+            {{ form_row(registrationForm.Siret) }}
+            {{ form_row(registrationForm.nbreStagiaires) }}
+            {{ form_row(registrationForm.agreeTerms) }}
+            <button type="submit" class="registerbtn">Inscription</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+    <div class="container signin">
+        <p class="goToConnexion">Avez-vous déjà un compte? <a class="connexionLink" href="{{ path('app_login') }}">Connexion</a></p>
+    </div>
+{% endblock %}

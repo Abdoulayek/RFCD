@@ -2,87 +2,106 @@
 
 {% block title %}Connexion sur l'application RFCD !{% endblock %}
 
-{% block body %}
-<style>
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            background-color: #001387;
+        }
 
-body {
-    background-color: #001387;
-}
+        .container {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-form {
-    margin-top : 50px;
-    margin-left: 42%;
-}
+        form {
+            margin-top: 50px;
+            border: 1px solid white;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white;
+            width: 400px; /* Augmentation de la largeur du cadre */
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-label, h1{
-    color: white;
-}
+        label, p {
+            color: black;
+        }
 
-h1{
-    text-align: center;
-}
+        h1 {
+            color: white;
+            text-align: center;
+        }
 
-input[type=email], input[type=password]{
-  width: 30%; /* Full width */
-  display: grid;
-  padding: 12px; /* Some padding */ 
-  border: 1px solid #ccc; /* Gray border */
-  border-radius: 10px; /* Rounded borders */
-  box-sizing: border-box; /* Make sure that padding and width stays in place */
-  margin-top: 6px; /* Add a top margin */
-  margin-bottom: 16px; /* Bottom margin */
-  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
-}
+        input[type=email], input[type=password] {
+            width: 80%;
+            display: grid;
+            padding: 12px;
+            border: 1px solid black;
+            border-radius: 10px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+            color: black;
+        }
 
-button {
-  background-color: #FFFF;
-  color: #001387;
-  padding: 12px 20px;
-  font-weight: bold;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
+        button {
+            background-color: black;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
 
-.lostPassword{
-    color: white;
-}
+        .lostPassword {
+            color: black;
+        }
 
-itemContainer {
-    margin-left: 50px;
-}
+        .itemContainer {
+            margin-left: 50px;
+        }
 
-button:hover {
-  background-color: #FFFF;
-}
-
-</style>
-
-    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-    <form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Mot de passe</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    <button type="submit">
-        Connexion
-    </button>
-    <p><a href="{{path('app_forgot_password_request')}}" class="lostPassword">Mot de passe oublié</a></p>
-</form>
+        button:hover {
+            background-color: #001387;
+        }
+    </style>
 {% endblock %}
 
+{% block body %}
+    <div class="container">
+        <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+
+            <label for="inputEmail">Email</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
+                   autocomplete="email" required autofocus>
+            <label for="inputPassword">Mot de passe</label>
+            <input type="password" name="password" id="inputPassword" class="form-control"
+                   autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
+
+            <button type="submit">
+                Connexion
+            </button>
+            <p><a href="{{ path('app_forgot_password_request') }}" class="lostPassword">Mot de passe oublié</a></p>
+        </form>
+    </div>
+{% endblock %}

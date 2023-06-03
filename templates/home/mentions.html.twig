@@ -2,37 +2,63 @@
 
 {% block title %}Mentions légales !{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .legal-container {
+            color: #00;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
-<style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="legal-container">
+                    <h1>Mentions légales</h1>
 
+                    <p>
+                        1- PROPRIÉTÉ INTELLECTUELLE
+                        <br/>
+                        <br/>La charte graphique et les contenus du site sont protégés par la législation relative Code de la Propriété Intellectuelle et des Réglementations Internationales applicables. En conséquence, toute représentation, reproduction, modification ou, de manière plus générale, exploitation de la charte graphique ou des contenus du présent site sans autorisation expresse et préalable de Organisme CFD en qualité de propriétaire de la plateforme « RFCD » est interdite. Toute exploitation non autorisée de ces éléments est constitutive d’acte de contrefaçon de droit d’auteur et/ou droit des signes distinctifs et engage la responsabilité pénale et civile du contrevenant.
+                    </p>
 
+                    <p>
+                        2- CONDITIONS GÉNÉRALES D’UTILISATION DU SITE ET DES SERVICES PROPOSÉS
+                        <br/>L’utilisation de la plateforme « RFCD » implique l’acceptation pleine et entière des conditions générales d’utilisation ci-après décrites. Ces conditions d’utilisation sont susceptibles d’être modifiées ou complétées à tout moment, les utilisateurs de la plateforme « RFCD » sont donc invités à les consulter de manière régulière. Ce site internet est normalement accessible à tout moment aux utilisateurs. Une interruption pour raison de maintenance technique peut être toutefois décidée par de la plateforme « RFCD », qui s’efforcera alors de communiquer préalablement aux utilisateurs les dates et heures de l’intervention. La plateforme « RFCD » est mis à jour régulièrement par le responsable de la publication. De la même façon, les mentions légales peuvent être modifiées à tout moment : elles s’imposent néanmoins à l’utilisateur qui est invité à s’y référer le plus souvent possible afin d’en prendre connaissance.
+                    </p>
 
-</style>
+                    <p>
+                        3- LIMITATION DE RESPONSABILITÉ
+                        <br/>Les informations contenues sur ce site sont aussi précises que possibles et le site est périodiquement remis à jour, mais peut toutefois contenir des inexactitudes, des omissions ou des lacunes. Si vous constatez une lacune, erreur ou ce qui parait être un dysfonctionnement, merci de bien vouloir le signaler par email en décrivant le problème de la manière la plus précise possible (page posant problème, action déclenchante, type d’ordinateur et de navigateur utilisé, …).
+                        <br/>
+                        <br/>Tout contenu téléchargé se fait aux risques et périls de l’utilisateur et sous sa seule responsabilité. En conséquence, la plateforme « RFCD » ne saurait être tenue responsable d’un quelconque dommage subi par l’ordinateur de l’utilisateur ou d’une quelconque perte de données consécutives au téléchargement.
+                        <br/>
+                        <br/>Les photos sont non contractuelles. Les liens hypertextes mis en place dans le cadre du présent site internet en direction d’autres ressources présentes sur le réseau Internet ne sauraient engager la responsabilité de de la plateforme « RFCD ».
+                    </p>
 
-<div>
-<h1> Mentions légales </h1>
+                    <p>
+                        4- LIMITATIONS CONTRACTUELLES SUR LES DONNÉES TECHNIQUES
+                        <br/>L’objectif est d’apporter une prestation qui assure le meilleur taux d’accessibilité. L’hébergeur assure la continuité de son service 24 Heures sur 24, tous les jours de l’année. Il se réserve néanmoins la possibilité d’interrompre le service d’hébergement pour les durées les plus courtes possibles notamment à des fins de maintenance, d’amélioration de ses infrastructures, de défaillance de ses infrastructures ou si les Prestations et Services génèrent un trafic réputé anormal.
+                        Organisme CFD en qualité de propriétaire de la plateforme « RFCD » et l’hébergeur ne pourront être tenus responsables en cas de dysfonctionnement du réseau Internet, des lignes téléphoniques ou du matériel informatique et de téléphonie lié notamment à l’encombrement du réseau empêchant l’accès au serveur.
+                    </p>
 
-1- PROPRIÉTÉ INTELLECTUELLE
-<br/>
-<br/>La charte graphique et les contenus du site sont protégés par la législation relative Code de la Propriété Intellectuelle et des Réglementations Internationales applicables. En conséquence, toute représentation, reproduction, modification ou, de manière plus générale, exploitation de la charte graphique ou des contenus du présent site sans autorisation expresse et préalable de Organisme CFD en qualité de propriétaire de la plateforme « RFCD » est interdite. Toute exploitation non autorisée de ces éléments est constitutive d’acte de contrefaçon de droit d’auteur et/ou droit des signes distinctifs et engage la responsabilité pénale et civile du contrevenant.
-<br/>
-<br/>2- CONDITIONS GÉNÉRALES D’UTILISATION DU SITE ET DES SERVICES PROPOSÉS
-<br/>L’utilisation de la plateforme « RFCD » implique l’acceptation pleine et entière des conditions générales d’utilisation ci-après décrites. Ces conditions d’utilisation sont susceptibles d’être modifiées ou complétées à tout moment, les utilisateurs de la plateforme « RFCD » sont donc invités à les consulter de manière régulière. Ce site internet est normalement accessible à tout moment aux utilisateurs. Une interruption pour raison de maintenance technique peut être toutefois décidée par de la plateforme « RFCD », qui s’efforcera alors de communiquer préalablement aux utilisateurs les dates et heures de l’intervention. La plateforme « RFCD » est mis à jour régulièrement par le responsable de la publication. De la même façon, les mentions légales peuvent être modifiées à tout moment : elles s’imposent néanmoins à l’utilisateur qui est invité à s’y référer le plus souvent possible afin d’en prendre connaissance.
-<br/>
-<br/>3- LIMITATION DE RESPONSABILITÉ
-<br/>Les informations contenues sur ce site sont aussi précises que possibles et le site est périodiquement remis à jour, mais peut toutefois contenir des inexactitudes, des omissions ou des lacunes. Si vous constatez une lacune, erreur ou ce qui parait être un dysfonctionnement, merci de bien vouloir le signaler par email en décrivant le problème de la manière la plus précise possible (page posant problème, action déclenchante, type d’ordinateur et de navigateur utilisé, …).
-
-<br/>Tout contenu téléchargé se fait aux risques et périls de l’utilisateur et sous sa seule responsabilité. En conséquence, la plateforme « RFCD » ne saurait être tenue responsable d’un quelconque dommage subi par l’ordinateur de l’utilisateur ou d’une quelconque perte de données consécutives au téléchargement.
-
-<br/>Les photos sont non contractuelles. Les liens hypertextes mis en place dans le cadre du présent site internet en direction d’autres ressources présentes sur le réseau Internet ne sauraient engager la responsabilité de de la plateforme « RFCD ».
-<br/>
-<br/>4- LIMITATIONS CONTRACTUELLES SUR LES DONNÉES TECHNIQUES
-<br/>L’objectif est d’apporter une prestation qui assure le meilleur taux d’accessibilité. L’hébergeur assure la continuité de son service 24 Heures sur 24, tous les jours de l’année. Il se réserve néanmoins la possibilité d’interrompre le service d’hébergement pour les durées les plus courtes possibles notamment à des fins de maintenance, d’amélioration de ses infrastructures, de défaillance de ses infrastructures ou si les Prestations et Services génèrent un trafic réputé anormal.
-Organisme CFD en qualité de propriétaire de la plateforme « RFCD » et l’hébergeur ne pourront être tenus responsables en cas de dysfonctionnement du réseau Internet, des lignes téléphoniques ou du matériel informatique et de téléphonie lié notamment à l’encombrement du réseau empêchant l’accès au serveur.
-<br/>
-<br/>5- GESTION DES DONNÉES PERSONNELLES.
-<br/>Le Client est informé des réglementations concernant la communication marketing, la loi du 21 Juin 2014 pour la confiance dans l’Economie Numérique, la Loi Informatique et Liberté du 06 Août 2004 ainsi que du Règlement Général sur la Protection des Données (RGPD : n° 2016-679).
-
-</div>
-
+                    <p>
+                        5- GESTION DES DONNÉES PERSONNELLES.
+                        <br/>Le Client est informé des réglementations concernant la communication marketing, la loi du 21 Juin 2014 pour la confiance dans l’Economie Numérique, la Loi Informatique et Liberté du 06 Août 2004 ainsi que du Règlement Général sur la Protection des Données (RGPD : n° 2016-679).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

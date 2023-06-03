@@ -1,78 +1,74 @@
 {% extends 'base.html.twig' %}
+
 {% block title %}Profil de l'application RFCD !{% endblock %}
 
 {% block body %}
 <style>
-
-.adresse {
-  color: black;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.nbreStagiaires {
-  color: black;
-  font-size: 18px;
-  font-weight: bold;
-}
-
 .card {
-  margin-left: 30%;
-  width : 500px;
-  border-radius: 20px; 
-  height: 400px;
-  background-color: #001387;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin-top: 100px;
-  text-align: center;
-}
-
-.email {
-  color: white;
-  font-size: 18px;
-}
-
-p {
-  color: white;
+    margin-left: 30%;
+    width: 500px;
+    border-radius: 20px;
+    height: 400px;
+    background-color: #001387;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-top: 100px;
+    text-align: center;
 }
 
 .userImg {
-  margin-top: 10px;
-}
-
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 40%;
-  border-radius: 20px;
-  font-size: 18px;
-}
-
-.button:hover, a:hover {
-  opacity: 0.7;
+    margin-top: 20px;
 }
 
 h1 {
-  color: white;
+    color: white;
+    font-size: 24px;
+    margin-top: 20px;
 }
 
+.email,
+.adresse,
+.nbreStagiaires {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.email {
+    margin-top: 10px;
+}
+
+p {
+    color: white;
+    margin-top: 5px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.button:hover,
+a:hover {
+    opacity: 0.7;
+}
 </style>
 
 <div class="card">
-  <img class="userImg" src="/profil.png" style="width:50px; height:50px;">
-  <h1>Bienvenue {{app.user.nom}} {{app.user.prenom}} !</h1>
-  <p class="email">{{app.user.email}}</p>
-  <p class="adresse">Adresse</p>
-  <p>{{app.user.adresse}}</p>
-     <p class="nbreStagiaires">Nombre de Stagiaires</p>
-        <p>{{app.user.nbreStagiaires}}</p>
-  <p><a class="button" href="{{path('update_post',{id:app.user.id})}}">Editer</a></p>
+    <img class="userImg" src="/profil.png" alt="User Profile" style="width: 100px; height: 100px;">
+    <h1>Bienvenue {{ app.user.nom }} {{ app.user.prenom }} !</h1>
+    <p class="email">{{ app.user.email }}</p>
+    <p class="adresse">Adresse</p>
+    <p>{{ app.user.adresse }}</p>
+    <p class="nbreStagiaires">Nombre de Stagiaires</p>
+    <p>{{ app.user.nbreStagiaires }}</p>
+    <p><a class="button" href="{{ path('update_post', {id: app.user.id}) }}">Editer</a></p>
 </div>
-
 {% endblock %}
