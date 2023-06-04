@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Nouveau message de contact</title>
+</head>
+<body>
+    <h1>Nouveau message de contact</h1>
+    {% if contact is not empty %}
+        <p>Vous avez reçu un nouveau message de contact :</p>
+        <table>
+            <tr>
+                <th>Nom:</th>
+                <td>{{ contact.name }}</td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>{{ contact.email }}</td>
+            </tr>
+            <tr>
+                <th>Message:</th>
+                <td>{{ contact.message }}</td>
+            </tr>
+        </table>
+    {% else %}
+        <p>Aucun détail de contact disponible.</p>
+    {% endif %}
+</body>
+</html>

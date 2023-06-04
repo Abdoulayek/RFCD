@@ -41,11 +41,11 @@ button[type="submit"]:hover {
 {% block content %}
     <h1>Contactez-nous</h1>
 
-    {% if app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ app.flashes('success')[0] }}
-        </div>
-    {% endif %}
+{% if app.session.flashBag.has('success') %}
+    <div class="alert alert-success">
+        {{ app.session.flashBag.get('success')[0] }}
+    </div>
+{% endif %}
 
     {{ form_start(form) }}
         {{ form_row(form.name) }}

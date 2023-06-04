@@ -112,7 +112,7 @@ class RegistrationController extends AbstractController
 
 }  
 
-#[Route('/contact', name: 'app_contact')]
+#[Route('/contact_choix', name: 'app_contact')]
 public function contact(Request $request, MailerInterface $mailer)
 {
     $form = $this->createForm(ContactFormType::class);
