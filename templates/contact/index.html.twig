@@ -48,7 +48,7 @@ button[type="submit"]:hover {
 {% endif %}
 
     {{ form_start(form) }}
-        {{ form_row(form.name) }}
+        {{ form_row(form.name, {'label': 'Nom'}) }}
         {{ form_row(form.email) }}
         {{ form_row(form.message) }}
 
