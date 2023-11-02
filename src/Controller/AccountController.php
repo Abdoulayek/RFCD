@@ -15,4 +15,11 @@ class AccountController extends AbstractController
             'controller_name' => 'AccountController',
         ]);
     }
+
+    #[Route('/return', name: 'app_return')]
+    public function return(): Response
+    {
+        return $this->render('account/return.html.twig', [
+        ]);
+    }
 }
