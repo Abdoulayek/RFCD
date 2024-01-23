@@ -22,4 +22,10 @@ class AccountController extends AbstractController
         return $this->render('account/return.html.twig', [
         ]);
     }
+    #[Route('/success', name: 'app_success')]
+    public function success(): Response
+    {
+        return $this->render('account/success.html.twig', [
+        ]);
+    }
 }
